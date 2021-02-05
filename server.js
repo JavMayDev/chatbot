@@ -26,9 +26,7 @@ app.post('/webhook', (req, res) => {
 		},
             },
             (err, _res, _body) => {
-                if (!err) {
-                    console.log('Message sent!')
-                } else {
+                if (err) {
                     console.error('Unable to send message:' + err)
                 }
             }
