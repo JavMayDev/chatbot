@@ -10,7 +10,6 @@ app.use(bodyParser.urlencoded())
 app.post('/webhook', (req, res) => {
     req.body.entry.forEach((e) => {
         event = e.messaging[0]
-        console.log(event)
 
         request(
             {
@@ -22,7 +21,7 @@ app.post('/webhook', (req, res) => {
 			id: event.sender.id
 		    },
 		    message: {
-			text: 'hello dude'
+			text: 'you said ' + event.message.text
 		    }
 		},
             },
