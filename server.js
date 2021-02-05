@@ -1,11 +1,20 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const request = require('request')
+
 const app = express()
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded())
 
 app.post('/webhook', (req, res) => {
-    console.log( 'req body: ', req.body )
-    res.status(200).send('OK')
+
+    req.body.entry.forEach(e => {
+	event = e.messaging[0]
+	console.log( e )
+    })
+
+    res.status(200).send()
+
 })
 
 app.get('/webhook', (req, res) => {
